@@ -1,3 +1,5 @@
+import React from 'react';
+
 import Expenses from './components/Expenses';
 
 function App() {
@@ -22,12 +24,23 @@ function App() {
       date: new Date(2021, 5, 12),
     },
   ];
-  return (
-    <div>
-      <h2>Let's get started!</h2>
-      <Expenses items={expenses} />
-    </div>
+
+  //--- Ví dụ dùng React.createElement() thay cho JSX
+  return React.createElement(
+    'div',
+    {},
+    React.createElement('h2', {}, "Let's get started!"),
+    React.createElement(Expenses, { items: expenses })
   );
+
+  //--- JSX: Ngắn gọn trực quan hơn
+  //-- React.createElement() khi dùng JSX sẽ được xử lý ngầm
+  // return (
+  //   <div>
+  //     <h2>Let's get started!</h2>
+  //     <Expenses items={expenses} />
+  //   </div>
+  // );
 }
 
 export default App;

@@ -18,7 +18,7 @@ const cartReducer = (state, action) => {
     );
     const existingCartItem = state.items[existingCartItemIndex];
 
-    // Xử lý add nếu trùng sản phẩm
+    // Gộp số lượng sản phẩm nếu trùng nhau
     let updatedItems;
     if (existingCartItem) {
       const updatedItem = {
@@ -32,6 +32,30 @@ const cartReducer = (state, action) => {
     }
 
     // Giá trị trả về sau khi add
+    return {
+      items: updatedItems,
+      totalAmount: updatedTotalAmount,
+    };
+  }
+
+  if (action.type === 'REMOVE') {
+    // Tìm id của item
+    const existingCartItemIndex = state.items.findIndex(
+      item => item.id === action.id
+    );
+    const existingItem = state.items[existingCartItemIndex];
+
+    const updatedTotalAmount = state.totalAmount - existingItem.price;
+
+    let updatedItems;
+    if (existingItem.amount === 1) {
+      updatedItems = state.items.filter(item => item.id !== action.id);
+    } else {
+      const updatedItem = { ...existingItem, amount: existingItem.amount - 1 };
+      updatedItems = [...state.items];
+      updatedItems[existingCartItemIndex] = updatedItem;
+    }
+
     return {
       items: updatedItems,
       totalAmount: updatedTotalAmount,

@@ -3,9 +3,12 @@ import React, { useState } from 'react';
 import Button from './components/UI/Button/Button';
 
 import './App.css';
+import DemoOutput from './components/Demo/DemoOutput';
 
 function App() {
   const [showParagraph, setShowParagraph] = useState(false);
+
+  console.log('App RUNNING');
 
   const toggleParagraphHandle = () => {
     setShowParagraph(prevShowParagraph => !prevShowParagraph);
@@ -14,8 +17,8 @@ function App() {
   return (
     <div className="app">
       <h1>Hi there!</h1>
-      {showParagraph && <p>This is new!</p>}
-      <Button onClick={toggleParagraphHandle}>add</Button>
+      <DemoOutput show={false} />
+      <Button onClick={toggleParagraphHandle}>Toggle paragraph</Button>
     </div>
   );
 }

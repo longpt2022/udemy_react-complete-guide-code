@@ -9,9 +9,9 @@ const useHttp = (requestConfig, applyData) => {
     setError(null);
     try {
       const response = await fetch(requestConfig.url, {
-        method: requestConfig.method,
-        headers: requestConfig.headers,
-        body: JSON.stringify(requestConfig.body),
+        method: requestConfig.method ? requestConfig.method : 'GET',
+        headers: requestConfig.headers ? requestConfig.headers : {},
+        body: requestConfig.body ? JSON.stringify(requestConfig.body) : null,
       });
 
       if (!response.ok) {
@@ -28,12 +28,6 @@ const useHttp = (requestConfig, applyData) => {
   };
 
   return {
-    // cú pháp cũ, khi đặt trùng tên
-    // isLoading: isLoading,
-    // error: error,
-    // sendRequest: sendRequest,
-
-    // cú pháp mới, nếu đặt trùng tên
     isLoading,
     error,
     sendRequest,

@@ -11,19 +11,17 @@ const SimpleInput = props => {
   const formSubmissionHandler = event => {
     event.preventDefault();
 
+    if (enteredName.trim() === '') {
+      alert('Please enter a name');
+      return;
+    }
+
     console.log('from state:', enteredName);
 
     const enteredValue = nameInputRef.current.value;
     console.log('from ref:', enteredValue);
 
-    /*
-      - Xóa trường input sau khi nhập bằng ref:
-      KHÔNG NÊN dùng vì sẽ thao tác trực tiếp vào DOM
-      chỉ nên để React thao tác với DOM
-    */
-    // nameInputRef.current.value = '';
-
-    //--- Xóa trường input sau khi nhập bằng state
+    // nameInputRef.current.value = '' // DON'T USE THIS ;
     setEnteredName('');
   };
 

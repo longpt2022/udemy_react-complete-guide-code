@@ -7,6 +7,13 @@ const SimpleInput = props => {
   const enteredNameIsValid = enteredName.trim() !== '';
   const nameInputIsValid = !enteredNameIsValid && enteredNameTouched;
 
+  // Check form is valid
+  let formIsValid = false;
+
+  if (enteredNameIsValid) {
+    formIsValid = true;
+  }
+
   // 3. On "every keystroke"
   const nameInputChangeHandler = event => {
     setEnteredName(event.target.value);
@@ -53,7 +60,7 @@ const SimpleInput = props => {
         )}
       </div>
       <div className="form-actions">
-        <button>Submit</button>
+        <button disabled={!formIsValid}>Submit</button>
       </div>
     </form>
   );

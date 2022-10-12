@@ -5,6 +5,11 @@ const initialState = { counter: 0, showCounter: true };
 
 const counterReducer = (state = initialState, action) => {
   if (action.type === 'increment') {
+    // k nên thay đổi state như sau
+    // state.counter++''
+
+    // Chỉ nên overwrite (tạo 1 obj mới) lại như sau
+    // để tránh gặp lỗi sau này
     return {
       counter: state.counter + 1,
       showCounter: state.showCounter,

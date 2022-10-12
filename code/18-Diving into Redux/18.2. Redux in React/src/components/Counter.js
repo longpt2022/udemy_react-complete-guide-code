@@ -1,3 +1,5 @@
+// import { Component } from 'react';
+// import {  connect } from 'react-redux';
 import { useSelector, useDispatch } from 'react-redux';
 
 import classes from './Counter.module.css';
@@ -28,3 +30,45 @@ const Counter = () => {
 };
 
 export default Counter;
+
+// Sử dụng Redux trong Class
+// class Counter extends Component {
+//   incrementHandler() {
+//     this.props.increment();
+//   }
+//   decrementHandler() {
+//     this.props.decrement();
+//   }
+//   toggleCounterHandler() {}
+//   render() {
+//     return (
+//       <main className={classes.counter}>
+//         <h1>Redux Counter</h1>
+//         <div className={classes.value}>{this.props.counter}</div>
+//         <div>
+//           <button onClick={this.incrementHandler.bind(this)}>Increment</button>
+//           <button onClick={this.decrementHandler.bind(this)}>Decrement</button>
+//         </div>
+//         <button onClick={this.toggleCounterHandler}>Toggle Counter</button>
+//       </main>
+//     );
+//   }
+// }
+
+// // 1. State trong class
+// const mapStateToProps = state => {
+//   return {
+//     counter: state.counter,
+//   };
+// };
+
+// // 2. Action trong class
+// const mapDispatchToProps = dispatch => {
+//   return {
+//     increment: () => dispatch({ type: 'increment' }),
+//     decrement: () => dispatch({ type: 'decrement' }),
+//   };
+// };
+
+// // 3. Gán vào connect. Redux sẽ tự động quản lý subscribe
+// export default connect(mapStateToProps, mapDispatchToProps)(Counter);

@@ -64,7 +64,11 @@ const AuthForm = () => {
       })
       .then(data => {
         // console.log(data);
+        console.log(
+          `Token hết hạn sau: ${data.expiresIn}s = ${data.expiresIn / 60}min`
+        );
 
+        // Thời gian hết hạn token (thời gian hiện tại + 60 phút)
         const expirationTime = new Date(
           new Date().getTime() + +data.expiresIn * 1000
           // +data.expiresIn: "+" convert to number
